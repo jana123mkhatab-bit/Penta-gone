@@ -1,7 +1,7 @@
 /* PENTA-GONE — Cursor, Interactions & Ambient Systems */
 
-const CURSOR_SIZE = 5;
-const CURSOR_RING_SIZE = 18;
+const CURSOR_SIZE = 10;
+const CURSOR_RING_SIZE = 36;
 const RING_SCALE_HOVER = 1.8;
 
 /* ── CURSOR + GLOW TRAIL ────────────── */
@@ -16,13 +16,13 @@ export function initializeCursor() {
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    gsap.set(cursor, { x: mouseX - CURSOR_SIZE, y: mouseY - CURSOR_SIZE });
+    gsap.set(cursor, { x: mouseX - CURSOR_SIZE / 2, y: mouseY - CURSOR_SIZE / 2 });
     if (cursorGlow) gsap.to(cursorGlow, { x: mouseX, y: mouseY, duration: 0.8, ease: 'power2.out' });
   });
 
   function animateRing() {
-    ringX += (mouseX - ringX - CURSOR_RING_SIZE) * 0.1;
-    ringY += (mouseY - ringY - CURSOR_RING_SIZE) * 0.1;
+    ringX += (mouseX - ringX - CURSOR_RING_SIZE / 2) * 0.1;
+    ringY += (mouseY - ringY - CURSOR_RING_SIZE / 2) * 0.1;
     gsap.set(cursorRing, { x: ringX, y: ringY });
     requestAnimationFrame(animateRing);
   }
