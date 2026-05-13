@@ -105,6 +105,17 @@
 .mobile-menu {
   background: rgba(14, 31, 53, 0.97);
   backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open,
+body.menu-open html {
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  height: 100%;
+  width: 100%;
 }
 
 /* ── FLOATING PENTAGONS ── */
@@ -613,6 +624,34 @@
 
   .scroll-line {
     height: 35px;
+  }
+}
+
+/* ── TOUCH DEVICE SAFEGUARDS ──────────── */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  /* Prevent viewport zoom on touch */
+  input,
+  button,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  /* Better touch targets */
+  button,
+  a,
+  .mobile-link,
+  .detail-tab {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
