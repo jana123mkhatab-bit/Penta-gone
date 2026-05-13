@@ -3,54 +3,107 @@
 const CURSOR_SIZE = 10;
 const CURSOR_RING_SIZE = 36;
 const RING_SCALE_HOVER = 1.8;
+const RING_FRICTION = 0.15; // Higher = faster response
 
 /* ── CURSOR + GLOW TRAIL ────────────── */
 export function initializeCursor() {
+  // Disable custom cursor on touch devices
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    return;
+  }
+
   const cursor = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursorRing');
   const cursorGlow = document.getElementById('cursorGlow');
   if (!cursor || !cursorRing) return;
 
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+  let isVisible = true;
+  let animationFrameId = null;
 
-  document.addEventListener('mousemove', (e) => {
+  // Use pointer events for better mobile handling
+  document.addEventListener('pointermove', (e) => {
+    // Ignore touch pointers
+    if (e.pointerType === 'touch') return;
+    
     mouseX = e.clientX;
     mouseY = e.clientY;
-    gsap.set(cursor, { x: mouseX - CURSOR_SIZE / 2, y: mouseY - CURSOR_SIZE / 2 });
-    if (cursorGlow) gsap.to(cursorGlow, { x: mouseX, y: mouseY, duration: 0.8, ease: 'power2.out' });
-  });
 
-  function animateRing() {
-    ringX += (mouseX - ringX - CURSOR_RING_SIZE / 2) * 0.1;
-    ringY += (mouseY - ringY - CURSOR_RING_SIZE / 2) * 0.1;
-    gsap.set(cursorRing, { x: ringX, y: ringY });
-    requestAnimationFrame(animateRing);
+    // Show cursor if it was hidden
+    if (!isVisible) {
+      isVisible = true;
+      cursor.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+      if (cursorGlow) cursorGlow.style.opacity = '1';
+    }
+  }, { passive: true });
+
+  // Animation loop using RAF (much more performant than GSAP)
+  function animate() {
+    // Interpolate ring position with friction for smooth trailing
+    ringX += (mouseX - ringX - CURSOR_RING_SIZE / 2) * RING_FRICTION;
+    ringY += (mouseY - ringY - CURSOR_RING_SIZE / 2) * RING_FRICTION;
+
+    // Use transform for GPU acceleration
+    cursor.style.transform = `translate3d(${mouseX - CURSOR_SIZE / 2}px, ${mouseY - CURSOR_SIZE / 2}px, 0)`;
+    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+
+    // Glow follows cursor with slight delay
+    if (cursorGlow) {
+      cursorGlow.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
   }
-  animateRing();
+  animate();
 
   // Hide/show on leave/enter window
-  document.addEventListener('mouseleave', () => {
-    gsap.to([cursor, cursorRing, cursorGlow], { opacity: 0, duration: 0.3 });
-  });
-  document.addEventListener('mouseenter', () => {
-    gsap.to([cursor, cursorRing, cursorGlow], { opacity: 1, duration: 0.3 });
+  document.addEventListener('pointerleave', () => {
+    if (isVisible) {
+      isVisible = false;
+      cursor.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+      if (cursorGlow) cursorGlow.style.opacity = '0';
+    }
+  }, { passive: true });
+
+  document.addEventListener('pointerenter', () => {
+    if (!isVisible) {
+      isVisible = true;
+      cursor.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+      if (cursorGlow) cursorGlow.style.opacity = '1';
+    }
+  }, { passive: true });
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
   });
 }
 
 /* ── INTERACTIVE HOVER EFFECTS ────────── */
 export function setupInteractiveElements() {
+  // Skip on touch devices
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    return;
+  }
+
   const cursorRing = document.getElementById('cursorRing');
   const cursorGlow = document.getElementById('cursorGlow');
   if (!cursorRing) return;
 
+  const HOVER_CLASS = 'cursor-hover';
+
   document.querySelectorAll('a, button, .product-block, .quality-card, .routine-step').forEach((el) => {
     el.addEventListener('mouseenter', () => {
-      gsap.to(cursorRing, { scale: RING_SCALE_HOVER, duration: 0.3, overwrite: 'auto', borderColor: '#fbe543' });
-      if (cursorGlow) gsap.to(cursorGlow, { opacity: 1, scale: 1.4, duration: 0.4 });
+      cursorRing.classList.add(HOVER_CLASS);
+      if (cursorGlow) cursorGlow.classList.add(HOVER_CLASS);
     });
     el.addEventListener('mouseleave', () => {
-      gsap.to(cursorRing, { scale: 1, duration: 0.3, overwrite: 'auto', borderColor: 'rgba(109,206,238,0.7)' });
-      if (cursorGlow) gsap.to(cursorGlow, { opacity: 1, scale: 1, duration: 0.4 });
+      cursorRing.classList.remove(HOVER_CLASS);
+      if (cursorGlow) cursorGlow.classList.remove(HOVER_CLASS);
     });
   });
 }

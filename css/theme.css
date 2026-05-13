@@ -50,8 +50,10 @@
   pointer-events: none;
   z-index: 9990;
   background: radial-gradient(circle, rgba(251, 229, 67, 0.07) 0%, rgba(109, 206, 238, 0.04) 40%, transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: opacity 0.4s;
+  transform: translate3d(-50%, -50%, 0);
+  will-change: transform;
+  opacity: 1;
+  transition: opacity 0.2s;
   mix-blend-mode: screen;
 }
 
@@ -60,11 +62,38 @@
   background: var(--accent);
   box-shadow: 0 0 12px 4px rgba(251, 229, 67, 0.6);
   mix-blend-mode: normal;
+  will-change: transform;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 .cursor-ring {
   border-color: rgba(109, 206, 238, 0.7);
   box-shadow: 0 0 8px rgba(109, 206, 238, 0.3);
+  will-change: transform, border-color, box-shadow;
+  opacity: 1;
+  transition: opacity 0.2s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover state for cursor ring */
+.cursor-ring.cursor-hover {
+  transform: scale(1.8) !important;
+  border-color: #fbe543 !important;
+  box-shadow: 0 0 16px rgba(251, 229, 67, 0.8) !important;
+}
+
+#cursorGlow.cursor-hover {
+  transform: translate3d(-50%, -50%, 0) scale(1.4) !important;
+  opacity: 1 !important;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor,
+  .cursor-ring,
+  #cursorGlow {
+    display: none !important;
+  }
 }
 
 /* ── PROGRESS BAR ─────────────────────── */

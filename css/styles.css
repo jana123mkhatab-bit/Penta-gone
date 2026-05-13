@@ -25,9 +25,8 @@ html{overflow-x:hidden;scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);cursor:none;overflow-x:hidden;line-height:1.6;}
 
 /* CURSOR */
-.cursor{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;}
-.cursor-ring{width:36px;height:36px;border:1.5px solid var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:border-color var(--t-normal);}
-
+.cursor{width:10px;height:10px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;will-change:transform;transform:translate3d(0,0,0);}
+.cursor-ring{width:36px;height:36px;border:1.5px solid var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:border-color var(--t-normal);will-change:transform;transform:translate3d(0,0,0);}
 /* PROGRESS */
 .progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;z-index:1000;background:transparent;}
 .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--green-light));}
