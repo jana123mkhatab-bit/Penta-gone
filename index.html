@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══════════════════════════════════════════════
+       PRIMARY SEO META
+  ════════════════════════════════════════════════ -->
+  <title>Penta-gone — Five Concerns. Two Products.</title>
+  <meta name="description"
+    content="Penta-gone combines targeted skincare into only two essential products — the Daily Foaming Cleanser and 4-in-1 Emulgel — addressing acne, scars, hyperpigmentation, excess oil, and daily cleansing.">
+  <meta name="keywords"
+    content="Penta-gone, skincare, acne treatment, emulgel, foaming cleanser, hyperpigmentation, oil control, dermatologist tested">
+  <meta name="author" content="Penta-gone Skincare">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#07111e">
+  <link rel="canonical" href="https://penta-gone.com/">
+
+  <!-- ═══════════════════════════════════════════════
+       OPEN GRAPH  (Facebook · WhatsApp · LinkedIn · Messenger)
+  ════════════════════════════════════════════════ -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Penta-gone Skincare">
+  <meta property="og:url" content="https://penta-gone.com/">
+  <meta property="og:title" content="Penta-gone — Five Concerns. Two Products.">
+  <meta property="og:description"
+    content="Clinically formulated. Dermatologist tested. Two essential skincare products that tackle acne, scars, hyperpigmentation, excess oil, and daily cleansing — all at once.">
+  <meta property="og:image" content="https://penta-gone.com/assets/og-card.png">
+  <meta property="og:image:secure_url" content="https://penta-gone.com/assets/og-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"
+    content="Penta-gone Skincare — both products (Emulgel &amp; Cleanser) on a dark background with tagline: Five Concerns. Two Products.">
+  <!-- Short video preview (WhatsApp shows this on supported clients) -->
+  <meta property="og:video" content="https://penta-gone.com/assets/WhatsApp Video 2026-05-12 at 10.05.36 PM.mp4">
+  <meta property="og:video:secure_url" content="https://penta-gone.com/assets/WhatsApp Video 2026-05-12 at 10.05.36 PM.mp4">
+  <meta property="og:video:type" content="video/mp4">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ═══════════════════════════════════════════════
+       TWITTER / X CARD
+  ════════════════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@pentagone">
+  <meta name="twitter:creator" content="@pentagone">
+  <meta name="twitter:url" content="https://penta-gone.com/">
+  <meta name="twitter:title" content="Penta-gone — Five Concerns. Two Products.">
+  <meta name="twitter:description"
+    content="Two essential skincare products. Five concerns solved. Clinically formulated, dermatologist tested.">
+  <meta name="twitter:image" content="https://penta-gone.com/assets/og-card.png">
+  <meta name="twitter:image:alt"
+    content="Penta-gone Skincare products — Emulgel and Cleanser">
+
+  <!-- ═══════════════════════════════════════════════
+       WHATSAPP-SPECIFIC HINTS
+       WhatsApp uses og:image (above). These reinforce the preview.
+  ════════════════════════════════════════════════ -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- ═══════════════════════════════════════════════
+       FAVICON  (swap for real .ico / .svg when ready)
+  ════════════════════════════════════════════════ -->
+  <link rel="icon" type="image/png" href="assets/og-card.png">
+  <link rel="apple-touch-icon" href="assets/og-card.png">
+
+  <!-- ═══════════════════════════════════════════════
+       FONTS & STYLESHEETS
+  ════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/swirls.css">
+
+</head>
+
+<body>
+
+  <!-- GLOBAL SPARKLE CANVAS (fixed, full-site, behind all content) -->
+  <canvas id="globalSparkleCanvas" aria-hidden="true"></canvas>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- CURSOR GLOW -->
+  <div id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav id="mainNav" class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo">Penta<span>gone</span></a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#routine">Routine</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#ingredients">Ingredients</a></li>
+      <li><a href="#quality">Quality</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#philosophy" class="mobile-link">Philosophy</a></li>
+      <li><a href="#products" class="mobile-link">Products</a></li>
+      <li><a href="#routine" class="mobile-link">Routine</a></li>
+      <li><a href="#results" class="mobile-link">Results</a></li>
+      <li><a href="#ingredients" class="mobile-link">Ingredients</a></li>
+      <li><a href="#quality" class="mobile-link">Quality</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" aria-label="Hero banner">
+    <div class="hero-bg"></div>
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+    <!-- Ambient blobs -->
+    <div class="amb-blob yellow" style="width:500px;height:500px;top:-100px;right:-80px;animation-duration:22s;"
+      aria-hidden="true"></div>
+    <div class="amb-blob blue" style="width:400px;height:400px;bottom:-60px;left:-60px;animation-duration:18s;"
+      aria-hidden="true"></div>
+    <div class="amb-blob light-blue" style="width:300px;height:300px;top:40%;left:60%;animation-duration:25s;"
+      aria-hidden="true"></div>
+
+    <!-- Floating pentagon layer -->
+    <div class="fp-layer" aria-hidden="true" id="heroPentaLayer"></div>
+
+
+    <div class="hero-split" id="heroContent">
+
+      <!-- LEFT: Copy -->
+      <div class="hero-copy">
+        <p class="hero-eyebrow" id="heroEyebrow">Skincare Simplified</p>
+        <h1 class="hero-title" id="heroTitle">
+          Five Concerns.<br><em>Two Products.</em>
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+          Penta-gone combines targeted care into only two essential products — simplifying your routine while maximizing
+          results.
+        </p>
+        <a href="#products" class="hero-cta" id="heroCta" role="button">
+          Discover the Line
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <!-- Five concern badges — inside the copy column, left-aligned -->
+        <div class="hero-badges" aria-label="Five skin concerns addressed">
+          <div class="badge" style="--delay:0.2s">Acne</div>
+          <div class="badge" style="--delay:0.35s">Acne Scars</div>
+          <div class="badge" style="--delay:0.5s">Hyperpigmentation</div>
+          <div class="badge" style="--delay:0.65s">Excess Oil</div>
+          <div class="badge" style="--delay:0.8s">Daily Cleansing</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Process Video Card -->
+      <div class="hero-video-col" id="heroVideoCol">
+        <div class="hero-vid-card">
+          <div class="hero-vid-badge">
+            <span class="hero-vid-dot"></span>
+            Behind the Formula
+          </div>
+          <video
+            class="hero-vid"
+            id="heroProcessVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Penta-gone product formulation process"
+          >
+            <source src="assets/WhatsApp Video 2026-05-12 at 10.05.36 PM.mp4" type="video/mp4">
+          </video>
+          <!-- Mute / unmute toggle -->
+          <button class="hero-vid-mute" id="heroVidMute" aria-label="Toggle sound">
+            <svg id="iconMuted" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <svg id="iconUnmuted" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none">
+              <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <div class="hero-vid-caption">Formulated with precision — every batch crafted for maximum efficacy.</div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" id="marqueeWrap" aria-label="Brand features">
+    <div class="marquee-track">
+      <span>Clinically Formulated</span><span class="dot">·</span>
+      <span>Dermatologist Tested</span><span class="dot">·</span>
+      <span>Acne Control</span><span class="dot">·</span>
+      <span>Scar Reduction</span><span class="dot">·</span>
+      <span>Oil-Free Formula</span><span class="dot">·</span>
+      <span>Minimal Routine</span><span class="dot">·</span>
+      <span>Clinically Formulated</span><span class="dot">·</span>
+      <span>Dermatologist Tested</span><span class="dot">·</span>
+      <span>Acne Control</span><span class="dot">·</span>
+      <span>Scar Reduction</span><span class="dot">·</span>
+      <span>Oil-Free Formula</span><span class="dot">·</span>
+      <span>Minimal Routine</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy-section" id="philosophy" aria-label="Product philosophy">
+    <!-- Ambient blobs -->
+    <div class="amb-blob blue" style="width:350px;height:350px;top:10%;right:5%;animation-duration:20s;opacity:0.1;"
+      aria-hidden="true"></div>
+    <div class="fp-layer" aria-hidden="true" id="philPentaLayer"></div>
+
+    <div class="philosophy-bg-text" aria-hidden="true">GONE</div>
+    <div class="philosophy-inner">
+      <div class="philosophy-text" id="philText">
+        <span class="section-label" id="philLabel">01 — Our Philosophy</span>
+        <h2 class="philosophy-title" id="philTitle">
+          <span class="line-wrap"><span class="line-inner">Fewer products.</span></span>
+          <span class="line-wrap"><span class="line-inner">Better <em>results.</em></span></span>
+        </h2>
+        <p class="philosophy-p" id="philP1">
+          The Penta-gone line was developed with a simple idea: instead of using multiple products for different skin
+          concerns, we combine targeted care into only two essential products.
+        </p>
+        <p class="philosophy-p" id="philP2">
+          Our system is designed to address five common skin concerns through a minimal and practical approach —
+          simplifying your skincare routine while maximizing effectiveness.
+        </p>
+        <div class="concerns-list" id="philConcerns">
+          <div class="concern-item">
+            <div class="concern-num">01</div>
+            <div class="concern-name">Acne</div>
+          </div>
+          <div class="concern-item">
+            <div class="concern-num">02</div>
+            <div class="concern-name">Acne Scars</div>
+          </div>
+          <div class="concern-item">
+            <div class="concern-num">03</div>
+            <div class="concern-name">Hyperpigmentation</div>
+          </div>
+          <div class="concern-item">
+            <div class="concern-num">04</div>
+            <div class="concern-name">Excess Oil</div>
+          </div>
+          <div class="concern-item">
+            <div class="concern-num">05</div>
+            <div class="concern-name">Daily Cleansing</div>
+          </div>
+        </div>
+      </div>
+      <div class="philosophy-visual" id="philVisual">
+        <div class="pentagon-wrap" id="pentagonWrap">
+          <svg class="pentagon-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <polygon class="penta-outer" points="150,20 285,115 235,270 65,270 15,115" stroke="rgba(109,206,238,0.35)"
+              stroke-width="1" fill="none" />
+            <polygon class="penta-mid" points="150,55 248,135 215,245 85,245 52,135" stroke="rgba(109,206,238,0.2)"
+              stroke-width="1" fill="none" />
+            <polygon class="penta-inner" points="150,90 211,155 192,220 108,220 89,155" stroke="rgba(109,206,238,0.12)"
+              stroke-width="1" fill="rgba(109,206,238,0.03)" />
+          </svg>
+          <div class="penta-labels">
+            <span class="penta-label" style="top:2%;left:50%;transform:translateX(-50%)">Acne</span>
+            <span class="penta-label" style="top:32%;right:2%">Scars</span>
+            <span class="penta-label" style="bottom:5%;right:12%">Pigmentation</span>
+            <span class="penta-label" style="bottom:5%;left:12%">Excess Oil</span>
+            <span class="penta-label" style="top:32%;left:2%">Cleansing</span>
+          </div>
+          <div class="penta-center">
+            <span class="penta-brand">P5</span>
+            <span class="penta-sub">Penta-gone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KINETIC BAND -->
+  <div class="kinetic-band" id="kineticBand" aria-label="Product names scrolling banner">
+    <div class="kinetic-track" id="kineticTrack" role="marquee">
+      <span class="kinetic-word">Cleanser</span><span class="kinetic-dot">·</span>
+      <span class="kinetic-word">Emulgel</span><span class="kinetic-dot">·</span>
+      <span class="kinetic-word">Penta-gone</span><span class="kinetic-dot">·</span>
+      <span class="kinetic-word">Cleanser</span><span class="kinetic-dot">·</span>
+      <span class="kinetic-word">Emulgel</span><span class="kinetic-dot">·</span>
+      <span class="kinetic-word">Penta-gone</span><span class="kinetic-dot">·</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section" id="products" aria-label="Our products">
+    <div class="amb-blob yellow" style="width:300px;height:300px;top:20%;left:-80px;opacity:0.08;" aria-hidden="true">
+    </div>
+    <div class="amb-blob blue" style="width:350px;height:350px;bottom:10%;right:-60px;opacity:0.1;" aria-hidden="true">
+    </div>
+    <div class="fp-layer" aria-hidden="true" id="prodPentaLayer"></div>
+
+    <div class="products-inner">
+      <div class="products-header">
+        <span class="section-label" id="prodLabel">02 — The Products</span>
+        <h2 class="products-title" id="prodTitle">Two <em>Essential</em> Products</h2>
+      </div>
+
+      <!-- Product 1: Cleanser -->
+      <article class="product-block" id="product1" data-product="cleanser">
+        <div class="product-visual-col">
+          <div class="product-3d-wrap" id="cleanserVisual">
+            <div class="product-img-showcase">
+              <div class="product-img-main">
+                <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (3).jpeg"
+                  alt="Penta-gone Cleanser — front view" class="product-photo">
+              </div>
+              <div class="product-img-gallery">
+                <div class="product-img-thumb active"
+                  data-src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (3).jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (3).jpeg" alt="Front">
+                </div>
+                <div class="product-img-thumb" data-src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (2).jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (2).jpeg" alt="Back">
+                </div>
+                <div class="product-img-thumb" data-src="assets/WhatsApp Image 2026-05-13 at 1.44.27 AM.jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.44.27 AM.jpeg" alt="With box">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-num-big" aria-hidden="true">01</div>
+        </div>
+        <div class="product-info-col">
+          <span class="product-tag">Daily Cleanser</span>
+          <h3 class="product-name">Penta-gone<br><em>Cleanser</em></h3>
+          <p class="product-desc">
+            A gentle daily cleanser that effectively removes dirt, excess oil, and impurities without stripping the
+            skin's natural moisture barrier. Leaves skin feeling fresh, clean, and balanced — ideal for oily and
+            acne-prone skin.
+          </p>
+          <div class="product-details">
+            <div class="detail-tabs">
+              <button class="detail-tab active" data-tab="how-cleanser" id="tab-how-cleanser">How to Use</button>
+              <button class="detail-tab" data-tab="precautions-cleanser"
+                id="tab-precautions-cleanser">Precautions</button>
+              <button class="detail-tab" data-tab="qc-cleanser" id="tab-qc-cleanser">Quality Tests</button>
+            </div>
+            <div class="detail-content active" id="how-cleanser">
+              <ol class="detail-list">
+                <li>Apply a small amount to wet skin</li>
+                <li>Gently massage in circular motions for 30–60 seconds</li>
+                <li>Rinse thoroughly with water and pat dry</li>
+                <li>Use twice daily, morning and evening</li>
+              </ol>
+            </div>
+            <div class="detail-content" id="precautions-cleanser">
+              <ul class="detail-list">
+                <li>For external use only</li>
+                <li>Avoid direct contact with eyes</li>
+                <li>If irritation occurs, discontinue use</li>
+                <li>Store in a cool, dry place away from sunlight</li>
+              </ul>
+            </div>
+            <div class="detail-content" id="qc-cleanser">
+              <div class="qc-grid">
+                <div class="qc-item"><span class="qc-icon">⚗️</span>pH Test</div>
+                <div class="qc-item"><span class="qc-icon">🫧</span>Foamability Test</div>
+                <div class="qc-item"><span class="qc-icon">👁️</span>Appearance &amp; Color</div>
+                <div class="qc-item"><span class="qc-icon">👃</span>Odor Evaluation</div>
+                <div class="qc-item"><span class="qc-icon">🔬</span>Stability Test</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 2: Emulgel -->
+      <article class="product-block reverse" id="product2" data-product="emulgel">
+        <div class="product-visual-col">
+          <div class="product-3d-wrap" id="emulgelVisual">
+            <div class="product-img-showcase">
+              <div class="product-img-main">
+                <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM.jpeg" alt="Penta-gone Emulgel — front view"
+                  class="product-photo">
+              </div>
+              <div class="product-img-gallery">
+                <div class="product-img-thumb active" data-src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM.jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM.jpeg" alt="Front">
+                </div>
+                <div class="product-img-thumb" data-src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (1).jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.42.11 AM (1).jpeg" alt="Back">
+                </div>
+                <div class="product-img-thumb" data-src="assets/WhatsApp Image 2026-05-13 at 1.44.26 AM.jpeg">
+                  <img src="assets/WhatsApp Image 2026-05-13 at 1.44.26 AM.jpeg" alt="With box">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-num-big" aria-hidden="true">02</div>
+        </div>
+        <div class="product-info-col">
+          <span class="product-tag">Treatment Emulgel</span>
+          <h3 class="product-name">Penta-gone<br><em>Emulgel</em></h3>
+          <p class="product-desc">
+            A multifunctional emulgel formulated to target acne, reduce acne scars, improve hyperpigmentation, and
+            control excess oil. Its lightweight, non-greasy texture allows fast absorption while delivering effective
+            treatment and hydration.
+          </p>
+          <div class="product-details">
+            <div class="detail-tabs">
+              <button class="detail-tab active" data-tab="how-emulgel" id="tab-how-emulgel">How to Use</button>
+              <button class="detail-tab" data-tab="precautions-emulgel"
+                id="tab-precautions-emulgel">Precautions</button>
+              <button class="detail-tab" data-tab="qc-emulgel" id="tab-qc-emulgel">Quality Tests</button>
+            </div>
+            <div class="detail-content active" id="how-emulgel">
+              <ol class="detail-list">
+                <li>Apply a thin layer to clean, dry skin</li>
+                <li>Use once or twice daily on affected areas or entire face</li>
+                <li>Avoid excessive application</li>
+                <li>Use sunscreen during daytime use</li>
+              </ol>
+            </div>
+            <div class="detail-content" id="precautions-emulgel">
+              <ul class="detail-list">
+                <li>For external use only</li>
+                <li>Avoid contact with eyes and broken skin</li>
+                <li>Perform a patch test before first use</li>
+                <li>Mild dryness may occur initially</li>
+                <li>Use sunscreen during daytime use</li>
+              </ul>
+            </div>
+            <div class="detail-content" id="qc-emulgel">
+              <div class="qc-grid">
+                <div class="qc-item"><span class="qc-icon">⚗️</span>pH Test</div>
+                <div class="qc-item"><span class="qc-icon">💧</span>Viscosity Test</div>
+                <div class="qc-item"><span class="qc-icon">✋</span>Spreadability Test</div>
+                <div class="qc-item"><span class="qc-icon">🔍</span>Homogeneity Test</div>
+                <div class="qc-item"><span class="qc-icon">🔬</span>Stability Test</div>
+                <div class="qc-item"><span class="qc-icon">👁️</span>Phase Separation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ROUTINE SECTION -->
+  <section class="routine-section" id="routine" aria-label="Recommended skincare routine">
+    <div class="amb-blob light-blue" style="width:400px;height:400px;top:-80px;right:20%;opacity:0.09;"
+      aria-hidden="true"></div>
+    <div class="fp-layer" aria-hidden="true" id="routPentaLayer"></div>
+    <div class="routine-bg-text" aria-hidden="true">ROUTINE</div>
+    <div class="routine-inner">
+      <div class="routine-header">
+        <span class="section-label" id="routLabel">03 — Recommended Routine</span>
+        <h2 class="routine-title" id="routTitle">Together, They <em>Work Better</em></h2>
+        <p class="routine-sub" id="routSub">Use both products together for enhanced and more effective results.</p>
+      </div>
+      <div class="routine-steps">
+        <div class="routine-step" id="step1">
+          <div class="step-num">01</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1.5" opacity="0.3" />
+              <path d="M20 30 C20 24 25 20 30 20 C35 20 40 24 40 30" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M18 38 Q30 44 42 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <circle cx="30" cy="30" r="3" fill="currentColor" opacity="0.6" />
+            </svg>
+          </div>
+          <h3 class="step-title">Cleanse</h3>
+          <p class="step-desc">Start with Penta-gone Cleanser to purify and prepare the skin, removing impurities and
+            excess oil.</p>
+          <span class="step-tag">Morning &amp; Evening</span>
+        </div>
+        <div class="routine-arrow" aria-hidden="true">
+          <svg viewBox="0 0 40 20" fill="none">
+            <path d="M0 10 H36 M28 2 L38 10 L28 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="routine-step" id="step2">
+          <div class="step-num">02</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1.5" opacity="0.3" />
+              <path d="M22 22 Q30 18 38 22 Q42 30 38 38 Q30 42 22 38 Q18 30 22 22 Z" stroke="currentColor"
+                stroke-width="2" fill="none" />
+              <circle cx="30" cy="30" r="5" fill="currentColor" opacity="0.4" />
+            </svg>
+          </div>
+          <h3 class="step-title">Treat</h3>
+          <p class="step-desc">Apply Penta-gone Emulgel to target acne, reduce scars, improve pigmentation, and control
+            oil.</p>
+          <span class="step-tag">Once or Twice Daily</span>
+        </div>
+        <div class="routine-arrow" aria-hidden="true">
+          <svg viewBox="0 0 40 20" fill="none">
+            <path d="M0 10 H36 M28 2 L38 10 L28 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="routine-step" id="step3">
+          <div class="step-num">03</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="1.5" opacity="0.3" />
+              <path d="M22 32 L27 37 L38 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M15 30 A15 15 0 1 1 30 45" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                opacity="0.4" />
+            </svg>
+          </div>
+          <h3 class="step-title">Results</h3>
+          <p class="step-desc">Clearer, healthier skin through a simplified yet comprehensive routine targeting all five
+            concerns.</p>
+          <span class="step-tag">Consistent Use</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY SECTION -->
+  <section class="quality-section" id="quality" aria-label="Quality control">
+    <div class="amb-blob yellow" style="width:280px;height:280px;bottom:10%;left:5%;opacity:0.07;" aria-hidden="true">
+    </div>
+    <div class="fp-layer" aria-hidden="true" id="qualPentaLayer"></div>
+    <div class="quality-inner">
+      <div class="quality-header">
+        <span class="section-label" id="qualLabel">04 — Quality Assurance</span>
+        <h2 class="quality-title" id="qualTitle">Rigorously <em>Tested</em></h2>
+      </div>
+      <div class="quality-grid" id="qualGrid">
+        <div class="quality-card">
+          <div class="quality-icon">⚗️</div>
+          <h3>pH Balanced</h3>
+          <p>Formulated at skin-compatible pH for gentle daily use without disrupting your microbiome.</p>
+        </div>
+        <div class="quality-card">
+          <div class="quality-icon">🔬</div>
+          <h3>Stability Tested</h3>
+          <p>Each batch undergoes rigorous stability testing to ensure consistency and shelf-life integrity.</p>
+        </div>
+        <div class="quality-card">
+          <div class="quality-icon">✋</div>
+          <h3>Texture Verified</h3>
+          <p>Viscosity, spreadability, and homogeneity tests ensure optimal texture and application feel.</p>
+        </div>
+        <div class="quality-card">
+          <div class="quality-icon">👁️</div>
+          <h3>Appearance Evaluated</h3>
+          <p>Color, appearance, and phase separation checks guarantee every product meets visual standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER SLIDER -->
+  <section class="ba-section" id="results" aria-label="Before and after results">
+    <div class="amb-blob yellow" style="width:350px;height:350px;top:10%;left:-80px;opacity:0.08;" aria-hidden="true"></div>
+    <div class="amb-blob light-blue" style="width:300px;height:300px;bottom:5%;right:-60px;opacity:0.09;" aria-hidden="true"></div>
+    <div class="fp-layer" aria-hidden="true" id="baPentaLayer"></div>
+    <div class="ba-inner">
+      <div class="ba-header">
+        <span class="section-label" id="baLabel">05 — Real Results</span>
+        <h2 class="ba-title" id="baTitle">See the <em>Difference</em></h2>
+        <p class="ba-sub">Drag the slider to reveal what consistent use of Penta-gone can do for your skin.</p>
+      </div>
+      <div class="ba-slider-wrap" id="baSlider" role="img" aria-label="Before and after skin comparison slider">
+        <div class="ba-img ba-after">
+          <img src="assets/skin-after.png" alt="Skin after using Penta-gone — clear, glowing, even tone">
+          <span class="ba-label-badge ba-after-badge">After</span>
+        </div>
+        <div class="ba-img ba-before" id="baBeforePane">
+          <img src="assets/skin-before.png" alt="Skin before using Penta-gone — with acne and blemishes">
+          <span class="ba-label-badge ba-before-badge">Before</span>
+        </div>
+        <div class="ba-handle" id="baHandle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Drag to compare before and after">
+          <div class="ba-handle-line"></div>
+          <div class="ba-handle-circle">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 12H16M8 12L5 9M8 12L5 15M16 12L19 9M16 12L19 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ba-stats" aria-label="Results statistics">
+        <div class="ba-stat">
+          <span class="ba-stat-num" data-target="94">0</span><span class="ba-stat-unit">%</span>
+          <span class="ba-stat-label">reported clearer skin</span>
+        </div>
+        <div class="ba-stat">
+          <span class="ba-stat-num" data-target="4">0</span><span class="ba-stat-unit">wks</span>
+          <span class="ba-stat-label">average visible results</span>
+        </div>
+        <div class="ba-stat">
+          <span class="ba-stat-num" data-target="2">0</span><span class="ba-stat-unit">x</span>
+          <span class="ba-stat-label">daily routine only</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section class="ingredients-section" id="ingredients" aria-label="Key ingredients">
+    <div class="amb-blob blue" style="width:400px;height:400px;top:20%;right:-100px;opacity:0.09;" aria-hidden="true"></div>
+    <div class="fp-layer" aria-hidden="true" id="ingPentaLayer"></div>
+    <div class="ingredients-inner">
+      <div class="ingredients-header">
+        <span class="section-label" id="ingLabel">06 — Formula</span>
+        <h2 class="ingredients-title" id="ingTitle">What's <em>Inside</em></h2>
+        <p class="ingredients-sub">Every ingredient in Penta-gone is chosen with purpose — clinically backed actives combined with skin-nurturing carriers.</p>
+      </div>
+      <div class="ing-tabs" id="ingTabs">
+        <button class="ing-tab active" data-product="emulgel" id="itab-emulgel">Emulgel</button>
+        <button class="ing-tab" data-product="cleanser" id="itab-cleanser">Cleanser</button>
+      </div>
+      <div class="ing-grid" id="ingGrid">
+        <!-- Emulgel ingredients -->
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">🔬</div>
+          <h3 class="ing-name">Niacinamide</h3>
+          <p class="ing-benefit">Reduces hyperpigmentation, minimises pores, and controls excess sebum production.</p>
+          <span class="ing-tag">Oil Control · Pigmentation</span>
+        </div>
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">⚡</div>
+          <h3 class="ing-name">Salicylic Acid</h3>
+          <p class="ing-benefit">A BHA that penetrates pores to dissolve dead skin cells and fight active acne.</p>
+          <span class="ing-tag">Acne · Pore Clearing</span>
+        </div>
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">🌿</div>
+          <h3 class="ing-name">Allantoin</h3>
+          <p class="ing-benefit">Soothes irritation and accelerates skin cell renewal, helping fade acne scars.</p>
+          <span class="ing-tag">Scar Repair · Soothing</span>
+        </div>
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">💧</div>
+          <h3 class="ing-name">Isopropyl Myristate</h3>
+          <p class="ing-benefit">Lightweight emollient that enhances spreadability and fast absorption without greasiness.</p>
+          <span class="ing-tag">Texture · Absorption</span>
+        </div>
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">🛡️</div>
+          <h3 class="ing-name">Carbopol</h3>
+          <p class="ing-benefit">Gel-forming polymer that gives the emulgel its smooth, stable, non-runny texture.</p>
+          <span class="ing-tag">Stability · Formula</span>
+        </div>
+        <div class="ing-card" data-product="emulgel">
+          <div class="ing-icon">✨</div>
+          <h3 class="ing-name">Triethanolamine</h3>
+          <p class="ing-benefit">pH balancer ensuring the formula stays skin-compatible for daily use.</p>
+          <span class="ing-tag">pH Balanced · Safety</span>
+        </div>
+        <!-- Cleanser ingredients -->
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">🫧</div>
+          <h3 class="ing-name">Sodium Lauryl Ether Sulfate</h3>
+          <p class="ing-benefit">Mild surfactant that produces rich, gentle foam to lift dirt and excess oil effectively.</p>
+          <span class="ing-tag">Cleansing · Foaming</span>
+        </div>
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">🌊</div>
+          <h3 class="ing-name">Cocamidopropyl Betaine</h3>
+          <p class="ing-benefit">Gentle co-surfactant that conditions skin and reduces irritation during cleansing.</p>
+          <span class="ing-tag">Gentle · Conditioning</span>
+        </div>
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">🌿</div>
+          <h3 class="ing-name">Allantoin</h3>
+          <p class="ing-benefit">Calms skin after cleansing and supports barrier repair for a comfortable after-feel.</p>
+          <span class="ing-tag">Soothing · Barrier</span>
+        </div>
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">⚗️</div>
+          <h3 class="ing-name">Disodium EDTA</h3>
+          <p class="ing-benefit">Chelating agent that preserves formula stability and enhances cleansing efficacy.</p>
+          <span class="ing-tag">Stability · Preservation</span>
+        </div>
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">🔒</div>
+          <h3 class="ing-name">Methyl &amp; Propylparaben</h3>
+          <p class="ing-benefit">Gentle, well-tested preservatives that keep the formula safe and shelf-stable.</p>
+          <span class="ing-tag">Preservation · Safety</span>
+        </div>
+        <div class="ing-card" data-product="cleanser" style="display:none">
+          <div class="ing-icon">✨</div>
+          <h3 class="ing-name">Glycerin</h3>
+          <p class="ing-benefit">Humectant that draws moisture into the skin so it never feels stripped after cleansing.</p>
+          <span class="ing-tag">Hydration · Moisture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / WAITLIST WITH COUNTDOWN -->
+  <section class="contact-section" id="contact" aria-label="Contact section">
+    <div class="contact-glow" aria-hidden="true"></div>
+    <div class="amb-blob blue"
+      style="width:500px;height:300px;top:40%;left:50%;transform:translate(-50%,-50%);opacity:0.12;" aria-hidden="true">
+    </div>
+    <div class="fp-layer" aria-hidden="true" id="contactPentaLayer"></div>
+    <div class="contact-inner">
+      <span class="contact-label" id="cLabel">07 — Stay Updated</span>
+      <h2 class="contact-title" id="cTitle">Launching <em>Soon</em></h2>
+      <p class="contact-sub" id="cSub">Penta-gone is almost here. Be the first to get it.</p>
+      <!-- COUNTDOWN -->
+      <div class="countdown" id="countdown" aria-label="Launch countdown timer">
+        <div class="cd-unit">
+          <span class="cd-num" id="cdDays">00</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cdHours">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cdMins">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cdSecs">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+      <form class="contact-form" id="cForm" aria-label="Waitlist form">
+        <input class="contact-input" type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button class="contact-submit" type="submit">Join Waitlist</button>
+      </form>
+      <p class="waitlist-note">Join <strong id="waitlistCount">247</strong> others already on the list.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-bottom" role="contentinfo">
+    <a href="#" class="footer-logo">Penta<span>gone</span></a>
+    <span class="footer-copy">© 2025 Penta-gone Skincare. All rights reserved.</span>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script src="js/swirls.js"></script>
+  <script src="js/features.js"></script>
+</body>
+
+</html>

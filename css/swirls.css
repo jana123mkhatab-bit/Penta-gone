@@ -1,0 +1,191 @@
+/* ═══════════════════════════════════════════════════════════════
+   PENTA-GONE — Brushstroke Background Swirls
+   Hand-painted feel, baked into the background layer.
+   Colors: #6DCEEE · #44B8DA · #FBE543
+   ═══════════════════════════════════════════════════════════════ */
+
+.swirl-el {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity;
+    mix-blend-mode: overlay;
+    opacity: 0;
+}
+
+.swirl-el.cyan {
+    filter: drop-shadow(0 0 8px rgba(109, 206, 238, 0.15));
+}
+
+.swirl-el.blue {
+    filter: drop-shadow(0 0 6px rgba(68, 184, 218, 0.12));
+}
+
+.swirl-el.yellow {
+    filter: drop-shadow(0 0 7px rgba(251, 229, 67, 0.12));
+}
+
+@keyframes brush-drift-a {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    12% {
+        opacity: 0.18;
+    }
+
+    15% {
+        opacity: 0.18;
+    }
+
+    50% {
+        opacity: 0.18;
+        transform: translate(3vw, -8vh) rotate(12deg) scale(1.04);
+    }
+
+    85% {
+        opacity: 0.18;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(5vw, -18vh) rotate(22deg) scale(1.08);
+    }
+}
+
+@keyframes brush-drift-b {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    14% {
+        opacity: 0.16;
+    }
+
+    15% {
+        opacity: 0.16;
+    }
+
+    50% {
+        opacity: 0.16;
+        transform: translate(-4vw, -6vh) rotate(-15deg) scale(0.97);
+    }
+
+    85% {
+        opacity: 0.16;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-7vw, -16vh) rotate(-28deg) scale(0.94);
+    }
+}
+
+@keyframes brush-drift-c {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    10% {
+        opacity: 0.20;
+    }
+
+    15% {
+        opacity: 0.20;
+    }
+
+    50% {
+        opacity: 0.20;
+        transform: translate(6vw, -5vh) rotate(8deg) scale(1.06);
+    }
+
+    85% {
+        opacity: 0.20;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(9vw, -14vh) rotate(16deg) scale(1.1);
+    }
+}
+
+@keyframes brush-drift-d {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    13% {
+        opacity: 0.15;
+    }
+
+    15% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.15;
+        transform: translate(-2vw, -10vh) rotate(20deg) scale(0.96);
+    }
+
+    85% {
+        opacity: 0.15;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-4vw, -20vh) rotate(35deg) scale(0.92);
+    }
+}
+
+@keyframes brush-drift-e {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    11% {
+        opacity: 0.17;
+    }
+
+    15% {
+        opacity: 0.17;
+    }
+
+    50% {
+        opacity: 0.17;
+        transform: translate(2vw, -7vh) rotate(-10deg) scale(1.03);
+    }
+
+    85% {
+        opacity: 0.17;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(3vw, -17vh) rotate(-18deg) scale(1.06);
+    }
+}
+
+.sd-a {
+    animation-name: brush-drift-a;
+}
+
+.sd-b {
+    animation-name: brush-drift-b;
+}
+
+.sd-c {
+    animation-name: brush-drift-c;
+}
+
+.sd-d {
+    animation-name: brush-drift-d;
+}
+
+.sd-e {
+    animation-name: brush-drift-e;
+}

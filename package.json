@@ -1,0 +1,41 @@
+{
+  "name": "solara-website",
+  "version": "1.0.0",
+  "description": "Premium Sun Protection Website - Luxury minimalist design with scroll-driven animations",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/solara-website"
+  },
+  "keywords": [
+    "luxury",
+    "ecommerce",
+    "animation",
+    "gsap",
+    "scrolltrigger",
+    "responsive",
+    "accessibility"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "serve:node": "npx http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "eslint": "^8.50.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
