@@ -516,41 +516,44 @@
   .hero {
     height: auto;
     min-height: 100vh;
-    padding: 3rem 0 2rem;
+    padding: 2rem 0 1rem;
   }
 
   .hero-split {
-    gap: 1.5rem;
+    gap: 1.2rem;
     padding-top: 0;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  .hero-title {
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
-    line-height: 1;
-    margin-bottom: 0.8rem;
-  }
-
   .hero-eyebrow {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     font-size: 0.65rem;
   }
 
+  .hero-title {
+    font-size: clamp(2.4rem, 7.5vw, 5rem);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+    flex: 1;
+  }
+
   .hero-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.7;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
   }
 
   .hero-cta {
     padding: 0.8rem 1.8rem;
     font-size: 0.75rem;
     gap: 0.6rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero-badges {
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
     gap: 0.5rem;
   }
 
@@ -560,14 +563,13 @@
   }
 
   .hero-video-col {
-    width: min(92vw, 300px);
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    width: min(85vw, 280px);
+    margin-top: 0.5rem;
   }
 
   .hero-vid {
     aspect-ratio: 9 / 14;
-    max-height: 360px;
+    max-height: 320px;
   }
 
   .hero-vid-card {
@@ -590,7 +592,7 @@
   .hero-vid-mute {
     width: 36px;
     height: 36px;
-    bottom: 50px;
+    bottom: 48px;
     right: 10px;
   }
 
