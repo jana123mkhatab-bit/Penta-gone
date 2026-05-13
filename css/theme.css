@@ -262,7 +262,7 @@
 
 /* Left column: copy */
 .hero-copy {
-  flex: 1 1 0;
+  flex: 2 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -272,8 +272,8 @@
 
 /* Right column: video card */
 .hero-video-col {
-  flex: 0 0 420px;
-  width: 420px;
+  flex: 0 0 340px;
+  width: 340px;
   opacity: 0;
   transform: translateX(40px);
   animation: hero-vid-enter 0.9s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
