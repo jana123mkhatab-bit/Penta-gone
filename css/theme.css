@@ -93,6 +93,14 @@
   .cursor-ring,
   #cursorGlow {
     display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Restore system cursor */
+  body {
+    cursor: auto !important;
   }
 }
 

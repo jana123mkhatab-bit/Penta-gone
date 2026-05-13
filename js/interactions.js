@@ -5,10 +5,34 @@ const CURSOR_RING_SIZE = 36;
 const RING_SCALE_HOVER = 1.8;
 const RING_FRICTION = 0.15; // Higher = faster response
 
+// Detect if device is touch-based
+const IS_TOUCH_DEVICE = () => {
+  return (
+    window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+    ('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0)
+  );
+};
+
 /* ── CURSOR + GLOW TRAIL ────────────── */
 export function initializeCursor() {
-  // Disable custom cursor on touch devices
-  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+  // Completely disable custom cursor on touch devices
+  if (IS_TOUCH_DEVICE()) {
+    // Hide and disable all cursor elements
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    const cursorGlow = document.getElementById('cursorGlow');
+    
+    [cursor, cursorRing, cursorGlow].forEach(el => {
+      if (el) {
+        el.style.display = 'none';
+        el.style.pointerEvents = 'none';
+        el.style.visibility = 'hidden';
+      }
+    });
+    
+    // Restore default cursor
+    document.body.style.cursor = 'auto';
     return;
   }
 
@@ -22,10 +46,10 @@ export function initializeCursor() {
   let isVisible = true;
   let animationFrameId = null;
 
-  // Use pointer events for better mobile handling
+  // Use pointer events for better mouse handling
   document.addEventListener('pointermove', (e) => {
-    // Ignore touch pointers
-    if (e.pointerType === 'touch') return;
+    // Ignore touch and pen pointers - only track mouse
+    if (e.pointerType !== 'mouse') return;
     
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -85,8 +109,8 @@ export function initializeCursor() {
 
 /* ── INTERACTIVE HOVER EFFECTS ────────── */
 export function setupInteractiveElements() {
-  // Skip on touch devices
-  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+  // Completely skip on touch devices
+  if (IS_TOUCH_DEVICE()) {
     return;
   }
 
@@ -100,16 +124,21 @@ export function setupInteractiveElements() {
     el.addEventListener('mouseenter', () => {
       cursorRing.classList.add(HOVER_CLASS);
       if (cursorGlow) cursorGlow.classList.add(HOVER_CLASS);
-    });
+    }, { passive: true });
     el.addEventListener('mouseleave', () => {
       cursorRing.classList.remove(HOVER_CLASS);
       if (cursorGlow) cursorGlow.classList.remove(HOVER_CLASS);
-    });
+    }, { passive: true });
   });
 }
 
 /* ── MAGNETIC BUTTONS ─────────────────── */
 export function setupMagneticButtons() {
+  // Skip magnetic effects on touch devices
+  if (IS_TOUCH_DEVICE()) {
+    return;
+  }
+
   document.querySelectorAll('.hero-cta, .contact-submit, .detail-tab').forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -118,10 +147,10 @@ export function setupMagneticButtons() {
       const dx = (e.clientX - cx) * 0.25;
       const dy = (e.clientY - cy) * 0.25;
       gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
-    });
+    }, { passive: true });
     btn.addEventListener('mouseleave', () => {
       gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
-    });
+    }, { passive: true });
   });
 }
 
